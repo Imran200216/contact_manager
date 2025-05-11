@@ -16,10 +16,10 @@ class AppValidators {
     if (value == null || value.isEmpty) {
       return 'Phone number cannot be empty';
     }
-
-    final phoneRegExp = RegExp(r'^\+?[1-9]\d{1,14}$');
+    // A basic regex to validate phone number (for example: 10 digits)
+    final phoneRegExp = RegExp(r'^\d{10}$');
     if (!phoneRegExp.hasMatch(value)) {
-      return 'Please enter a valid phone number';
+      return 'Please enter a valid 10-digit phone number';
     }
     return null;
   }

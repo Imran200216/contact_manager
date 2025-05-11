@@ -1,5 +1,7 @@
+import 'package:contact_manager/bloc/contact_bloc.dart';
 import 'package:contact_manager/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
@@ -20,10 +22,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Contact Manager',
-      home: HomeScreen(),
+    return MultiBlocProvider(
+      providers: [
+        // Contact Bloc
+        BlocProvider(create: (context) => ContactBloc()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Contact Manager',
+        home: HomeScreen(),
+      ),
     );
   }
 }
